@@ -21,3 +21,6 @@ https://tomgregory.com/gradle-implementation-vs-compile-dependencies/
 Test<br/>
 https://appimage.github.io/BloomRPC/
 https://formulae.brew.sh/cask/bloomrpc
+
+A Simple Guide to Connection Pooling in Java
+https://www.baeldung.com/java-connection-pooling

@@ -13,6 +13,7 @@ repositories {
 sourceCompatibility = 11
 targetCompatibility = 11
 
+def c3p0Version = '0.9.1.2'
 def grpcVersion = '1.50.0'
 def protobufVersion = '3.21.7'
 def protocVersion = protobufVersion
@@ -20,6 +21,7 @@ def protocVersion = protobufVersion
 def h2Version = '1.4.200'
 
 dependencies {
+    implementation group: 'c3p0', name: 'c3p0', version: "${c3p0Version}"
     implementation group: 'com.google.protobuf', name: 'protobuf-java', version: "${protobufVersion}"
     implementation group: 'com.h2database', name: 'h2', version: "${h2Version}"
     implementation group: 'io.grpc', name: 'grpc-all', version: "${grpcVersion}"
