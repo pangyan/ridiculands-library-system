@@ -24,3 +24,6 @@ https://formulae.brew.sh/cask/bloomrpc
 
 A Simple Guide to Connection Pooling in Java
 https://www.baeldung.com/java-connection-pooling
+
+Protocol Buffers File Naming Convention
+https://developers.google.com/protocol-buffers/docs/style

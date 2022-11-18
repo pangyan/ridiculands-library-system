@@ -1,2 +1,3 @@
 rootProject.name = 'ridiculands-grocery'
-
+include('services:borrower')
+include('services:borrowing-record')

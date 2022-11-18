@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.ridiculands.library.stubs.borrowing_record;
+
+option java_package = "com.ridiculands.library.stubs.borrowing_record";
+option java_multiple_files = true;
+
+service BorrowingRecordService {
+  rpc calculateOverdueFine(OverdueFineRequest) returns (OverdueFineResponse);
+}
+
+message OverdueFineRequest {
+  string userName = 1;
+}
+
+message OverdueFineResponse {
+  double amount = 1;
+}
