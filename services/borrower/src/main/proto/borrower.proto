@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package com.ridiculands.library.stubs.borrower;
+
+option java_multiple_files = true;
+
+service BorrowerService {
+  rpc getBorrowerDetails(BorrowerRequest) returns (BorrowerResponse);
+}
+
+message BorrowerRequest {
+  string borrowerName = 1;
+}
+
+message BorrowerResponse {
+  int32 id = 1;
+  string borrowerName = 2;
+  string name = 3;
+  BorrowerType borrowerType = 4;
+}
+
+enum BorrowerType {
+  GENERAL = 0;
+  STUDENT = 1;
+  STAFF = 2;
+}

@@ -1,7 +1,7 @@
-package com.ridiculands.grocery.server;
+package com.ridiculands.library.server;
 
-import com.ridiculands.grocery.db.H2DatabaseConnectionPool;
-import com.ridiculands.grocery.service.UserServiceImpl;
+import com.ridiculands.library.db.H2DatabaseConnectionPool;
+import com.ridiculands.library.service.BorrowerServiceImpl;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
@@ -11,9 +11,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class UserServer {
+public class BorrowerServer {
 
-    private static final Logger LOGGER = Logger.getLogger(UserServer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BorrowerServer.class.getName());
     private Server server;
 
     public void startServer() {
@@ -22,7 +22,7 @@ public class UserServer {
             H2DatabaseConnectionPool.initializeBorrowerServiceDatabase();
 
             server = ServerBuilder.forPort(port)
-                    .addService(new UserServiceImpl())
+                    .addService(new BorrowerServiceImpl())
                     .build()
                     .start();
 
@@ -33,7 +33,7 @@ public class UserServer {
                 public void run() {
                     LOGGER.log(Level.INFO, "Shutting down user server after JVM is shut down...");
                     try {
-                        UserServer.this.stopServer();
+                        BorrowerServer.this.stopServer();
                     } catch (InterruptedException e) {
                         LOGGER.log(Level.SEVERE, "UserServer is not stopped properly", e);
                     }
@@ -59,8 +59,8 @@ public class UserServer {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        UserServer userServer = new UserServer();
-        userServer.startServer();
-        userServer.blockUntilShutdown();
+        BorrowerServer borrowerServer = new BorrowerServer();
+        borrowerServer.startServer();
+        borrowerServer.blockUntilShutdown();
     }
 }

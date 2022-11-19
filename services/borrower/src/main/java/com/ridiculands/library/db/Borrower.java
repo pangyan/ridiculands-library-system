@@ -1,6 +1,6 @@
-package com.ridiculands.grocery.db;
+package com.ridiculands.library.db;
 
-public class User {
+public class Borrower {
     private int id;
     private String userName;
     private String name;

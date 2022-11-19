@@ -1,4 +1,4 @@
-package com.ridiculands.grocery.db;
+package com.ridiculands.library.db;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.h2.tools.RunScript;

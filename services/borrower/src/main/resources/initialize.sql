@@ -1,4 +1,5 @@
-drop table orders if exists;
+drop table book if exists;
+drop table borrowing_record if exists;
 drop table customer if exists;
 
 create table customer (
