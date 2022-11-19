@@ -12,15 +12,13 @@ repositories {
 sourceCompatibility = 11
 targetCompatibility = 11
 
-def grpcVersion = '1.50.0'
+def c3p0Version = '0.9.1.2'
+def h2Version = '1.4.200'
 
 dependencies {
-    implementation group: 'io.grpc', name: 'grpc-all', version: "${grpcVersion}"
-    implementation project(':systems:db')
-    implementation project(':interfaces:borrower-interface')
-    // compileOnly "org.apache.tomcat:annotations-api:6.0.53"
+    implementation group: 'c3p0', name: 'c3p0', version: "${c3p0Version}"
+    implementation group: 'com.h2database', name: 'h2', version: "${h2Version}"
 
-    testImplementation "io.grpc:grpc-testing:${grpcVersion}"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
