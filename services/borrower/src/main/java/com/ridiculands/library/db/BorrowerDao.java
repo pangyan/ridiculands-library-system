@@ -16,14 +16,14 @@ public class BorrowerDao {
         try{
             Connection connection = H2DatabaseConnectionPool.getConnectionToDatabase();
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("select * from customer where username=?");
+                    .prepareStatement("select * from borrower where user_name=?");
             preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 borrower.setId(resultSet.getInt("id"));
-                borrower.setUserName(resultSet.getString("username"));
-                borrower.setName(resultSet.getString("name"));
-                borrower.setMemberType(resultSet.getString("membertype"));
+                borrower.setUserName(resultSet.getString("user_name"));
+                borrower.setBorrowerFullName(resultSet.getString("borrower_full_name"));
+                borrower.setBorrowerType(resultSet.getString("borrower_type"));
             }
         } catch (SQLException exception) {
             logger.log(Level.SEVERE, "Could not execute query", exception);

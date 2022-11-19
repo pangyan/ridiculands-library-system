@@ -3,8 +3,8 @@ package com.ridiculands.library.db;
 public class Borrower {
     private int id;
     private String userName;
-    private String name;
-    private String memberType;
+    private String borrowerFullName;
+    private String borrowerType;
 
     public int getId() {
         return id;
@@ -22,19 +22,19 @@ public class Borrower {
         this.userName = userName;
     }
 
-    public String getName() {
-        return name;
+    public String getBorrowerFullName() {
+        return borrowerFullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBorrowerFullName(String borrowerFullName) {
+        this.borrowerFullName = borrowerFullName;
     }
 
-    public String getMemberType() {
-        return memberType;
+    public String getBorrowerType() {
+        return borrowerType;
     }
 
-    public void setMemberType(String memberType) {
-        this.memberType = memberType;
+    public void setBorrowerType(String borrowerType) {
+        this.borrowerType = borrowerType;
     }
 }

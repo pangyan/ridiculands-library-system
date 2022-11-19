@@ -9,13 +9,13 @@ service BorrowerService {
 }
 
 message BorrowerRequest {
-  string borrowerName = 1;
+  string userName = 1;
 }
 
 message BorrowerResponse {
   int32 id = 1;
-  string borrowerName = 2;
-  string name = 3;
+  string userName = 2;
+  string borrowerFullName = 3;
   BorrowerType borrowerType = 4;
 }
 

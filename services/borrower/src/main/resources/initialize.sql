@@ -1,26 +1,26 @@
 drop table book if exists;
 drop table borrowing_record if exists;
-drop table customer if exists;
+drop table borrower if exists;
 
-create table customer (
+create table borrower (
   id int(11) NOT NULL AUTO_INCREMENT,
-  username varchar(50) DEFAULT NULL,
+  user_name varchar(50) DEFAULT NULL,
   password varchar(50) DEFAULT NULL,
-  name varchar(50) DEFAULT NULL,
-  membertype varchar(50) DEFAULT NULL,
+  borrower_full_name varchar(50) DEFAULT NULL,
+  borrower_type varchar(50) DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
-INSERT INTO customer
+INSERT INTO borrower
 VALUES
-(1,'admin','admin','DJ Ridiculands','GOLD'),
-(2,'christian','christian','Christian Bale','GOLD'),
-(3,'hugh','hugh','Hugh Jackman','GOLD'),
-(4,'ross','ross','Ross Geller','GOLD'),
-(5,'chandler','chandler','Chandler Bing','GOLD'),
-(6,'monica','monica','Monica Geller','GOLD'),
-(7,'rachel','rachel','Rachel Greene','GOLD'),
-(8,'phoebe','phoebe','Phoebe Buffay','GOLD');
+(1,'admin','admin','DJ Ridiculands','STAFF'),
+(2,'christian','christian','Christian Bale','GENERAL'),
+(3,'hugh','hugh','Hugh Jackman','GENERAL'),
+(4,'ross','ross','Ross Geller','STUDENT'),
+(5,'chandler','chandler','Chandler Bing','STUDENT'),
+(6,'monica','monica','Monica Geller','GENERAL'),
+(7,'rachel','rachel','Rachel Greene','STUDENT'),
+(8,'phoebe','phoebe','Phoebe Buffay','GENERAL');
 
 CREATE TABLE book (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -36,11 +36,11 @@ VALUES
 
 CREATE TABLE borrowing_record (
   borrowing_record_id int(11) NOT NULL AUTO_INCREMENT,
-  customer_id int(11) DEFAULT NULL,
+  borrower_id int(11) DEFAULT NULL,
   book_id int(11) DEFAULT NULL,
   due_date date DEFAULT NULL,
   PRIMARY KEY (borrowing_record_id),
-  foreign key (customer_id) references customer(id),
+  foreign key (borrower_id) references borrower(id),
   foreign key (book_id) references book(id)
 );
 

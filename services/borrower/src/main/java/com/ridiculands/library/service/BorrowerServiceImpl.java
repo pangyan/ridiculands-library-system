@@ -12,13 +12,13 @@ public class BorrowerServiceImpl extends BorrowerServiceGrpc.BorrowerServiceImpl
     @Override
     public void getBorrowerDetails(BorrowerRequest request, StreamObserver<BorrowerResponse> responseObserver) {
         BorrowerDao borrowerDao = new BorrowerDao();
-        Borrower borrower = borrowerDao.getDetails(request.getBorrowerName());
+        Borrower borrower = borrowerDao.getDetails(request.getUserName());
 
         BorrowerResponse.Builder borrowerResponseBuilder = BorrowerResponse.newBuilder()
                 .setId(borrower.getId())
-                .setBorrowerName(borrower.getUserName())
-                .setName(borrower.getName())
-                .setBorrowerType(BorrowerType.valueOf(borrower.getMemberType()));
+                .setUserName(borrower.getUserName())
+                .setBorrowerFullName(borrower.getBorrowerFullName())
+                .setBorrowerType(BorrowerType.valueOf(borrower.getBorrowerType()));
 
         BorrowerResponse borrowerResponse = borrowerResponseBuilder.build();
 
