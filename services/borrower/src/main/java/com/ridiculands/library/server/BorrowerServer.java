@@ -26,23 +26,20 @@ public class BorrowerServer {
                     .build()
                     .start();
 
-            LOGGER.log(Level.INFO, "User Server started");
+            LOGGER.log(Level.INFO, "Borrower Server started");
 
-            Runtime.getRuntime().addShutdownHook(new Thread() {
-                @Override
-                public void run() {
-                    LOGGER.log(Level.INFO, "Shutting down user server after JVM is shut down...");
-                    try {
-                        BorrowerServer.this.stopServer();
-                    } catch (InterruptedException e) {
-                        LOGGER.log(Level.SEVERE, "UserServer is not stopped properly", e);
-                    }
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                LOGGER.log(Level.INFO, "Shutting down borrower server after JVM is shut down...");
+                try {
+                    BorrowerServer.this.stopServer();
+                } catch (InterruptedException e) {
+                    LOGGER.log(Level.SEVERE, "BorrowerServer is not stopped properly", e);
                 }
-            });
+            }));
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "cannot start UserServer", e);
+            LOGGER.log(Level.SEVERE, "cannot start BorrowerServer", e);
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "cannot initialize User Service Database", e);
+            LOGGER.log(Level.SEVERE, "cannot initialize Borrower Service Database", e);
         }
     }
 

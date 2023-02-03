@@ -18,18 +18,16 @@ def protobufVersion = '3.21.7'
 def protocVersion = protobufVersion
 
 dependencies {
-    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: "${protobufVersion}"
-    implementation group: 'io.grpc', name: 'grpc-all', version: "${grpcVersion}"
+    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
     compileOnly "org.apache.tomcat:annotations-api:6.0.53"
-
-    // runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
 
     testImplementation "io.grpc:grpc-testing:${grpcVersion}"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
-// TODO ISRAELW
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:${protocVersion}"
@@ -56,9 +54,6 @@ sourceSets {
         }
     }
 }
-
-// TODO ISRAELW
-// startScripts.enabled = false
 
 test {
     useJUnitPlatform()

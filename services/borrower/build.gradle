@@ -15,10 +15,12 @@ targetCompatibility = 11
 def grpcVersion = '1.50.0'
 
 dependencies {
-    implementation group: 'io.grpc', name: 'grpc-all', version: "${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-api:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+
     implementation project(':systems:db')
     implementation project(':interfaces:borrower-interface')
-    // compileOnly "org.apache.tomcat:annotations-api:6.0.53"
 
     testImplementation "io.grpc:grpc-testing:${grpcVersion}"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
