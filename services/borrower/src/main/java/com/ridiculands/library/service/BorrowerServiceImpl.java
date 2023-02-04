@@ -6,6 +6,8 @@ import com.ridiculands.library.stubs.borrower.BorrowerType;
 import com.ridiculands.library.stubs.borrower.GetBorrowerDetailsRequest;
 import com.ridiculands.library.stubs.borrower.GetBorrowerDetailsResponse;
 import com.ridiculands.library.stubs.borrower.BorrowerServiceGrpc;
+import com.ridiculands.library.stubs.borrower.GetBorrowingRecordRequest;
+import com.ridiculands.library.stubs.borrower.GetBorrowingRecordResponse;
 import io.grpc.stub.StreamObserver;
 
 public class BorrowerServiceImpl extends BorrowerServiceGrpc.BorrowerServiceImplBase {
@@ -15,7 +17,6 @@ public class BorrowerServiceImpl extends BorrowerServiceGrpc.BorrowerServiceImpl
         Borrower borrower = borrowerDao.getDetails(request.getBorrowerCardNumber());
 
         GetBorrowerDetailsResponse.Builder borrowerResponseBuilder = GetBorrowerDetailsResponse.newBuilder()
-                .setId(borrower.getId())
                 .setBorrowerCardNumber(borrower.getBorrowerCardNumber())
                 .setUserName(borrower.getUserName())
                 .setBorrowerFullName(borrower.getBorrowerFullName())
@@ -25,5 +26,16 @@ public class BorrowerServiceImpl extends BorrowerServiceGrpc.BorrowerServiceImpl
 
         responseObserver.onNext(borrowerResponse);
         responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getBorrowingRecord(GetBorrowingRecordRequest request, StreamObserver<GetBorrowingRecordResponse> responseObserver) {
+        BorrowerDao borrowerDao = new BorrowerDao();
+        Borrower borrower = borrowerDao.getDetails(request.getBorrowerCardNumber());
+
+        // TODO ISRAELW call borrowing record service with the borrower id
+        borrower.getId();
+
+
     }
 }

@@ -14,19 +14,21 @@ message GetBorrowerDetailsRequest {
 }
 
 message GetBorrowerDetailsResponse {
-  int32 id = 1;
-  string borrowerCardNumber = 2;
-  string userName = 3;
-  string borrowerFullName = 4;
-  BorrowerType borrowerType = 5;
+  string borrowerCardNumber = 1;
+  string userName = 2;
+  string borrowerFullName = 3;
+  BorrowerType borrowerType = 4;
 }
 
 message GetBorrowingRecordRequest {
-
+  string borrowerCardNumber = 1;
 }
 
 message GetBorrowingRecordResponse {
-
+  string name = 1;
+  string author = 2;
+  string call_number = 3;
+  // TODO ISRAELW add due date
 }
 
 enum BorrowerType {
