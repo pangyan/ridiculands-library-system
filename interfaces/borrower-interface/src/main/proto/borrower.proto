@@ -5,18 +5,28 @@ package com.ridiculands.library.stubs.borrower;
 option java_multiple_files = true;
 
 service BorrowerService {
-  rpc getBorrowerDetails(BorrowerRequest) returns (BorrowerResponse);
+  rpc getBorrowerDetails(GetBorrowerDetailsRequest) returns (GetBorrowerDetailsResponse);
+  rpc getBorrowingRecord(GetBorrowingRecordRequest) returns (GetBorrowingRecordResponse);
 }
 
-message BorrowerRequest {
-  string userName = 1;
+message GetBorrowerDetailsRequest {
+  string borrowerCardNumber = 1;
 }
 
-message BorrowerResponse {
+message GetBorrowerDetailsResponse {
   int32 id = 1;
-  string userName = 2;
-  string borrowerFullName = 3;
-  BorrowerType borrowerType = 4;
+  string borrowerCardNumber = 2;
+  string userName = 3;
+  string borrowerFullName = 4;
+  BorrowerType borrowerType = 5;
+}
+
+message GetBorrowingRecordRequest {
+
+}
+
+message GetBorrowingRecordResponse {
+
 }
 
 enum BorrowerType {

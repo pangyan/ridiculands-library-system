@@ -2,6 +2,9 @@ package com.ridiculands.library.db;
 
 public class Borrower {
     private int id;
+
+    private String borrowerCardNumber;
+
     private String userName;
     private String borrowerFullName;
     private String borrowerType;
@@ -12,6 +15,14 @@ public class Borrower {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getBorrowerCardNumber() {
+        return borrowerCardNumber;
+    }
+
+    public void setBorrowerCardNumber(String borrowerCardNumber) {
+        this.borrowerCardNumber = borrowerCardNumber;
     }
 
     public String getUserName() {

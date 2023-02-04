@@ -6,13 +6,13 @@ option java_package = "com.ridiculands.library.stubs.borrowing_record";
 option java_multiple_files = true;
 
 service BorrowingRecordService {
-  rpc calculateOverdueFine(OverdueFineRequest) returns (OverdueFineResponse);
+  rpc calculateOverdueFine(CalculateOverdueFineRequest) returns (CalculateOverdueFineResponse);
 }
 
-message OverdueFineRequest {
+message CalculateOverdueFineRequest {
   string userName = 1;
 }
 
-message OverdueFineResponse {
+message CalculateOverdueFineResponse {
   double amount = 1;
 }

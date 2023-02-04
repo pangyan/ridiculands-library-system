@@ -44,13 +44,8 @@ public class H2DatabaseConnectionPool {
     /* Loads the initialize.sql file from the classpath folder "resources".
     Runs all the queries from the file to create tables, insert records and make it ready to use
     **/
-    public static void initializeBorrowerServiceDatabase() throws SQLException {
-        logger.log(Level.INFO, "initialize borrower service database...");
-        InputStream resource = H2DatabaseConnectionPool.class.getClassLoader().getResourceAsStream("initialize.sql");
-        RunScript.execute(getConnectionToDatabase(), new InputStreamReader(resource));
-    }
-    public static void initializeBorrowingRecordServiceDatabase() throws SQLException {
-        logger.log(Level.INFO, "initialize borrowing record service database...");
+    public static void initializeDatabase() throws SQLException {
+        logger.log(Level.INFO, "initialize service database...");
         InputStream resource = H2DatabaseConnectionPool.class.getClassLoader().getResourceAsStream("initialize.sql");
         RunScript.execute(getConnectionToDatabase(), new InputStreamReader(resource));
     }

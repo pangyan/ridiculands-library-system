@@ -20,7 +20,7 @@ dependencies {
     implementation "io.grpc:grpc-stub:${grpcVersion}"
 
     implementation project(':systems:db')
-    implementation project(':interfaces:borrowing-record-interface')
+    implementation project(':interfaces:book-interface')
 
     testImplementation "io.grpc:grpc-testing:${grpcVersion}"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'

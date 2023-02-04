@@ -19,7 +19,7 @@ public class BorrowerServer {
     public void startServer() {
         int port = 5001;
         try {
-            H2DatabaseConnectionPool.initializeBorrowerServiceDatabase();
+            H2DatabaseConnectionPool.initializeDatabase();
 
             server = ServerBuilder.forPort(port)
                     .addService(new BorrowerServiceImpl())

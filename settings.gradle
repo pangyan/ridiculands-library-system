@@ -1,5 +1,8 @@
 rootProject.name = 'ridiculands-library-system'
+include 'interfaces:book-interface'
 include 'interfaces:borrower-interface'
+include 'interfaces:borrowing-record-interface'
+include 'services:book'
 include 'services:borrower'
 include 'services:borrowing-record'
 include 'systems:db'
