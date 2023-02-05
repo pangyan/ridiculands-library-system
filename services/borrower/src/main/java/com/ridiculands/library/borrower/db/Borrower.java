@@ -1,4 +1,4 @@
-package com.ridiculands.library.db;
+package com.ridiculands.library.borrower.db;
 
 public class Borrower {
     private int id;
@@ -7,6 +7,8 @@ public class Borrower {
 
     private String userName;
     private String borrowerFullName;
+
+    // TODO ISRAELW change to enum
     private String borrowerType;
 
     public int getId() {

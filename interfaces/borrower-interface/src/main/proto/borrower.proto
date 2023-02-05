@@ -25,10 +25,14 @@ message GetBorrowingRecordRequest {
 }
 
 message GetBorrowingRecordResponse {
+  repeated BorrowingRecord borrowingRecord = 1;
+}
+
+message BorrowingRecord {
   string name = 1;
   string author = 2;
   string call_number = 3;
-  // TODO ISRAELW add due date
+  string due_date = 4;
 }
 
 enum BorrowerType {

@@ -19,6 +19,7 @@ dependencies {
     implementation "io.grpc:grpc-api:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
 
+    implementation project(':systems:date')
     implementation project(':systems:db')
     implementation project(':interfaces:borrowing-record-interface')
 

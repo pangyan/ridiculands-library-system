@@ -1,7 +1,7 @@
-package com.ridiculands.library.service;
+package com.ridiculands.library.borrower.service;
 
-import com.ridiculands.library.db.Borrower;
-import com.ridiculands.library.db.BorrowerDao;
+import com.ridiculands.library.borrower.db.Borrower;
+import com.ridiculands.library.borrower.db.BorrowerDao;
 import com.ridiculands.library.stubs.borrower.BorrowerType;
 import com.ridiculands.library.stubs.borrower.GetBorrowerDetailsRequest;
 import com.ridiculands.library.stubs.borrower.GetBorrowerDetailsResponse;

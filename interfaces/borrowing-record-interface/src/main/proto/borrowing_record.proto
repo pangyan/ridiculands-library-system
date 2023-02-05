@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package com.ridiculands.library.stubs.borrowing_record;
 
-option java_package = "com.ridiculands.library.stubs.borrowing_record";
 option java_multiple_files = true;
 
 service BorrowingRecordService {
   rpc calculateOverdueFine(CalculateOverdueFineRequest) returns (CalculateOverdueFineResponse);
+  rpc getBorrowingRecord(GetBorrowingRecordRequest) returns (GetBorrowingRecordResponse);
 }
 
 message CalculateOverdueFineRequest {
@@ -15,4 +15,18 @@ message CalculateOverdueFineRequest {
 
 message CalculateOverdueFineResponse {
   double amount = 1;
+}
+
+message GetBorrowingRecordRequest {
+  int32 borrowerId = 1;
+}
+
+message GetBorrowingRecordResponse {
+  repeated BorrowingRecord borrowingRecord = 1;
+}
+
+message BorrowingRecord {
+  int32 borrowerId = 1;
+  int32 bookId = 2;
+  string dueDate = 3;
 }

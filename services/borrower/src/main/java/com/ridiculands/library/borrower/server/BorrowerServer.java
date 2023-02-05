@@ -1,7 +1,7 @@
-package com.ridiculands.library.server;
+package com.ridiculands.library.borrower.server;
 
 import com.ridiculands.library.db.H2DatabaseConnectionPool;
-import com.ridiculands.library.service.BorrowerServiceImpl;
+import com.ridiculands.library.borrower.service.BorrowerServiceImpl;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 

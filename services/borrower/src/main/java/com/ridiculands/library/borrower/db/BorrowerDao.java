@@ -1,4 +1,6 @@
-package com.ridiculands.library.db;
+package com.ridiculands.library.borrower.db;
+
+import com.ridiculands.library.db.H2DatabaseConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +18,7 @@ public class BorrowerDao {
         try{
             Connection connection = H2DatabaseConnectionPool.getConnectionToDatabase();
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("select * from borrower where borrower_card_number=?");
+                    .prepareStatement("select * from borrower, borrower_type where borrower.borrower_card_number=? and borrower.borrower_type_id=borrower_type.id");
             preparedStatement.setString(1, borrowerCardNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){

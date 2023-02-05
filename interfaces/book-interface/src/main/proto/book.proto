@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package com.ridiculands.library.stubs.book;
+
+option java_multiple_files = true;
+
+service BookService {
+  rpc getBook(GetBookRequest) returns (GetBookResponse);
+}
+
+message GetBookRequest {
+  int32 bookId = 1;
+}
+
+message GetBookResponse {
+  string name = 1;
+  string author = 2;
+  string call_number = 3;
+  Status status = 4;
+}
+
+enum Status {
+  CHECKED_OUT = 0;
+  ON_SHELF = 1;
+  IN_TRANSFER = 2;
+  ARCHIVED = 3;
+  MISSING = 4;
+}
