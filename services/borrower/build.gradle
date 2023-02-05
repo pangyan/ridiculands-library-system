@@ -21,6 +21,7 @@ dependencies {
 
     implementation project(':systems:db')
     implementation project(':interfaces:borrower-interface')
+    implementation project(':interfaces:borrowing-record-interface')
 
     testImplementation "io.grpc:grpc-testing:${grpcVersion}"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
