@@ -27,3 +27,6 @@ https://www.baeldung.com/java-connection-pooling
 
 Protocol Buffers File Naming Convention
 https://developers.google.com/protocol-buffers/docs/style
+
+Trouble-Shooting
+https://yidongnan.github.io/grpc-spring-boot-starter/en/trouble-shooting.html

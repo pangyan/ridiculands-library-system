@@ -20,6 +20,7 @@ dependencies {
     implementation "io.grpc:grpc-stub:${grpcVersion}"
 
     implementation project(':systems:db')
+    implementation project(':interfaces:book-interface')
     implementation project(':interfaces:borrower-interface')
     implementation project(':interfaces:borrowing-record-interface')
 

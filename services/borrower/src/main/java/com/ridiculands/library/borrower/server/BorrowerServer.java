@@ -1,6 +1,6 @@
 package com.ridiculands.library.borrower.server;
 
-import com.ridiculands.library.borrower.serviceadapter.factory.BorrowingRecordServiceAdapterFactory;
+import com.ridiculands.library.borrower.serviceadapter.factory.ServiceAdapterFactory;
 import com.ridiculands.library.db.H2DatabaseConnectionPool;
 import com.ridiculands.library.borrower.service.BorrowerServiceImpl;
 import io.grpc.Server;
@@ -23,7 +23,7 @@ public class BorrowerServer {
             H2DatabaseConnectionPool.initializeDatabase();
 
             server = ServerBuilder.forPort(port)
-                    .addService(new BorrowerServiceImpl(new BorrowingRecordServiceAdapterFactory()))
+                    .addService(new BorrowerServiceImpl(new ServiceAdapterFactory()))
                     .build()
                     .start();
 

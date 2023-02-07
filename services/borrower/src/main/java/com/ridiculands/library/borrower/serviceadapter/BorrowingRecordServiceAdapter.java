@@ -1,5 +1,6 @@
 package com.ridiculands.library.borrower.serviceadapter;
 
+import com.ridiculands.library.stubs.book.GetBookResponse;
 import com.ridiculands.library.stubs.borrower.BorrowingRecord;
 import com.ridiculands.library.stubs.borrowing_record.BorrowingRecordServiceGrpc;
 import io.grpc.ManagedChannel;
@@ -13,6 +14,12 @@ public class BorrowingRecordServiceAdapter {
 
     private static final String SERVICE_URL = "localhost:5002";
 
+    private final BookServiceAdapter bookServiceAdapter;
+
+    public BorrowingRecordServiceAdapter(BookServiceAdapter bookServiceAdapter) {
+        this.bookServiceAdapter = bookServiceAdapter;
+    }
+
     public List<BorrowingRecord> getBorrowingRecord(int borrowerId) {
         // TODO ISRAELW call borrowing record service with the borrower id
         // TODO ISRAELW 1. get channel
@@ -21,7 +28,7 @@ public class BorrowingRecordServiceAdapter {
         // TODO ISRAELW 2. get a stub object
         BorrowingRecordServiceGrpc.BorrowingRecordServiceBlockingStub borrowingRecordServiceBlockingStub = BorrowingRecordServiceGrpc.newBlockingStub(channel);
 
-        // TODO ISRAELW 3. call service method
+        // TODO ISRAELW 3. build request and call service method
         com.ridiculands.library.stubs.borrowing_record.GetBorrowingRecordRequest getBorrowingRecordRequest = com.ridiculands.library.stubs.borrowing_record.GetBorrowingRecordRequest.newBuilder()
                 .setBorrowerId(borrowerId)
                 .build();
@@ -36,13 +43,15 @@ public class BorrowingRecordServiceAdapter {
         }
 
         // TODO ISRAELW 5. map to response borrowing records
-        List<BorrowingRecord> borrowingRecordInResponse = getBorrowingRecordResponse.getBorrowingRecordList().stream().map(borrowingRecord -> BorrowingRecord.newBuilder()
-                        .setAuthor("tbi")
-                        .setCallNumber("tbi")
-                        .setName("tbi")
-                        .setDueDate(borrowingRecord.getDueDate())
-                        .build())
-                .collect(Collectors.toList());
+        List<BorrowingRecord> borrowingRecordInResponse = getBorrowingRecordResponse.getBorrowingRecordList().stream().map(borrowingRecord -> {
+            GetBookResponse getBookResponse = bookServiceAdapter.getBook(borrowingRecord.getBookId());
+            return BorrowingRecord.newBuilder()
+                    .setAuthor(getBookResponse.getAuthor())
+                    .setCallNumber(getBookResponse.getCallNumber())
+                    .setName(getBookResponse.getName())
+                    .setDueDate(borrowingRecord.getDueDate())
+                    .build();
+        }).collect(Collectors.toList());
 
         return borrowingRecordInResponse;
     }
